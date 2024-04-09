@@ -1,0 +1,48 @@
+project_name/
+│
+├── README.md                   # Project overview and instructions
+├── LICENSE                     # Project license
+├── .gitignore                  # Specifies intentionally untracked files to ignore
+│
+├── .github/
+│   └── workflows/              # GitHub Actions workflows
+│
+├── data/
+│   ├── raw/                    # Raw data, immutable
+│   ├── prep/                   # Preprocessed data
+│   └── references/             # Reference files, e.g., genome annotations
+│
+├── envs/
+│   └── main.yml                # Conda environment file for Nextflow or AWS configurations
+│
+├── notebooks/
+│   ├── example_notebook.ipynb  # Jupyter notebooks for exploration and presentation
+│   ├── intro.ipynb
+│   └── README.md               # Description of notebooks
+│
+├── reports/
+│   ├── _config.yml             # Configuration for report generation
+│   ├── images/                 # Images for reports
+│   │   └── logo.png
+│   ├── notebooks/              # Notebooks formatted for reporting
+│   │   ├── example_notebook.md
+│   │   ├── intro.md
+│   │   └── README.md
+│   ├── README.md               # Report overview
+│   └── _toc.yml                # Table of contents for reports
+│
+├── src/
+│   ├── scripts/                # Reusable code scripts, including AWS CLI commands or SDK scripts
+│   └── pipelines/              # Workflow definitions, e.g., Nextflow scripts (.nf files)
+│
+├── config/
+│   └──                        # Configuration files for AWS services (JSON, YAML)
+│
+├── docker/
+│   └──                        # Dockerfiles for managing environments
+│
+├── results/
+│   └──                        # Processed data, figures, tables, etc.
+│
+└── doc/
+    └── NOTE.md                # Detailed project notes and documentation
