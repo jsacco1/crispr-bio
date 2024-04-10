@@ -42,4 +42,4 @@ jobs:
     - name: Test pipeline results
       run: |
         # Add test steps here
-        pytest test.py 
+        pytest tests/test.py
