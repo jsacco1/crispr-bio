@@ -12,3 +12,19 @@ steps:
     NXF_VER: 23.10.3 
   run: |
     nextflow run main.nf -resume
+
+process generate_data {
+
+  script:
+  """
+  python /src/scripts/generate_test_data.py
+  """
+
+}
+
+workflow {
+
+  main:
+    generate_data()
+
+}

@@ -1,0 +1,3 @@
+Sample	Status
+Sample1	Passed
+Sample2	Passed
