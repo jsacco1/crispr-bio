@@ -23,11 +23,6 @@ jobs:
       with:
         java-version: '11'
         
-    - name: Install Nextflow
-      run: |
-        wget -qO- get.nextflow.io | bash
-        sudo mv nextflow /usr/local/bin/
-        
     - name: Run pipeline
       env:
         NXF_VER: 23.10.1  
