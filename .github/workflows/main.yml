@@ -26,13 +26,10 @@ jobs:
         
     - name: Run pipeline
       env:
-        NXF_VER: 23.10.1  
-      run: |  
-        nextflow run main.nf -resume
+        NXF_VER: 23.10.1
+      run: |
+        ~/opt/bin/nextflow run /Users/jamessacco/Github/projs/cas12/src/pipelines/main.nf
 
-    - name: Generate test data
-      run: python generate_test_data.py
-        
   test:
 
     needs: build
