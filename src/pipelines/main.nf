@@ -16,8 +16,8 @@ steps:
   run: echo $PATH
 
 - name: Run pipeline
-  run: |  
-    /usr/local/bin/nextflow run main.nf -resume
+  run: |
+    nextflow run /Users/jamessacco/Github/projs/cas12/src/pipelines/main.nf -resume
 
 - name: Run pipeline
   env:
