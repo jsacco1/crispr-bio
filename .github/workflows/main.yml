@@ -28,7 +28,7 @@ jobs:
       env:
         NXF_VER: 23.10.1
       run: |
-        ~/opt/bin/nextflow run /Users/jamessacco/Github/projs/cas12/src/pipelines/main.nf
+        /Users/jamessacco/opt/bin/nextflow run /Users/jamessacco/Github/projs/cas12/src/pipelines/main.nf
 
   test:
 
