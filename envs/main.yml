@@ -1,1 +1,50 @@
-# Conda environment file for Nextflow or AWS configurations
+name: Nextflow Pipeline 
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+      
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    
+    - uses: actions/checkout@v2
+    
+    - name: Set up JDK 
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        
+    - name: Install Nextflow
+      run: |
+        wget -qO- get.nextflow.io | bash
+        sudo mv nextflow /usr/local/bin/
+        
+    - name: Run pipeline
+      env:
+        NXF_VER: 23.10.1  
+      run: |  
+        nextflow run main.nf -resume
+        
+  test:
+
+    needs: build
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+    
+    - uses: actions/checkout@v2  
+    
+    - name: Test pipeline results
+      run: |
+        # Add test steps here
+        pytest test.py 
