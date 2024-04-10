@@ -15,3 +15,5 @@ summary_data = {'Sample': ['Sample1', 'Sample2'],
                 'Status': ['Passed', 'Passed']}
 summary_df = pd.DataFrame(summary_data)
 summary_df.to_csv('results/summary.txt', sep='\t', index=False)
+
+print("Done!")
