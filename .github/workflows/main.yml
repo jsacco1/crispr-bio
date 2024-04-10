@@ -28,6 +28,9 @@ jobs:
         NXF_VER: 23.10.1  
       run: |  
         nextflow run main.nf -resume
+
+    - name: Generate test data
+      run: python generate_test_data.py
         
   test:
 
@@ -37,7 +40,11 @@ jobs:
     
     steps:
     
-    - uses: actions/checkout@v2  
+    - uses: actions/checkout@v2
+
+    - name: Activate conda env
+      run: |
+        conda activate bio
     
     - name: Test pipeline results
       run: |
