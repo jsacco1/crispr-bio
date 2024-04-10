@@ -1,4 +1,4 @@
-name: Nextflow Pipeline 
+name: Cas12 Nextflow Pipeline 
 
 on:
   push:
@@ -23,6 +23,11 @@ jobs:
       with:
         java-version: '11'
         distribution: zulu
+    
+    - name: Install Nextflow
+      run: |
+        wget -qO- get.nextflow.io | bash
+        sudo mv nextflow /usr/local/bin
         
     - name: Run pipeline
       env:
