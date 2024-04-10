@@ -8,9 +8,16 @@ steps:
     java-version: '11'
 
 - name: Install Nextflow
-  run: | 
+  run: |
     wget -qO- get.nextflow.io | bash
     sudo mv nextflow /usr/local/bin/
+
+- name: Print Path 
+  run: echo $PATH
+
+- name: Run pipeline
+  run: |  
+    /usr/local/bin/nextflow run main.nf -resume
 
 - name: Run pipeline
   env:
