@@ -2,14 +2,19 @@ steps:
 
 - uses: actions/checkout@v2
 
-- name: Set up JDK 
+- name: Set up JDK
   uses: actions/setup-java@v2
-  with: 
+  with:
     java-version: '11'
+
+- name: Install Nextflow
+  run: | 
+    wget -qO- get.nextflow.io | bash
+    sudo mv nextflow /usr/local/bin/
 
 - name: Run pipeline
   env:
-    NXF_VER: 23.10.3 
+    NXF_VER: 23.10.3
   run: |
     nextflow run main.nf -resume
 
