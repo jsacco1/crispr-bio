@@ -1,4 +1,9 @@
-// Define your process
+#!/usr/bin/env nextflow
+
+/*
+ * Define your process
+ */
+
 process generate_data {
   script:
   """
@@ -6,7 +11,10 @@ process generate_data {
   """
 }
 
-// Define your workflow
+/*
+ * Define your workflow
+ */
+
 workflow {
   // Specify the process(es) to be executed
   generate_data
