@@ -43,7 +43,7 @@ jobs:
         needs: build
         runs-on: ubuntu-latest
         steps:
-          - name: Activate conda env
+          - name: Activate conda env and install pytest
             run: |
               source /opt/conda/etc/profile.d/conda.sh  # Use the correct path for GitHub Actions
               conda activate bio
