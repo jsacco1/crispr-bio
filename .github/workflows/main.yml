@@ -46,13 +46,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Activate conda env and install pytest
+      - name: Set up Miniconda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          activate-environment: bio
+          environment-file: environment.yml  # If you have an environment.yml file
+          python-version: 3.9
+          auto-activate-base: false
+
+      - name: Install pytest
         run: |
-          source /opt/conda/etc/profile.d/conda.sh  # Use the correct path for GitHub Actions
-          conda activate bio
           conda install -c conda-forge pytest
 
       - name: Test pipeline results
         run: |
-          # Run the tests using pytest
           pytest tests/test.py
