@@ -23,6 +23,7 @@ jobs:
       with:
         java-version: '11'
         distribution: zulu
+        
     - name: Install Nextflow
       uses: actions/setup-command@v3
       with: 
