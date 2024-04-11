@@ -9,11 +9,8 @@ on:
       - main
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
 
@@ -26,13 +23,13 @@ jobs:
       - name: Install Nextflow
         run: |
           curl -fsSL https://get.nextflow.io | bash
-          mkdir -p $HOME/bin
-          mv nextflow $HOME/bin
+          mkdir -p $HOME/.local/bin
+          mv nextflow $HOME/.local/bin
 
       - name: Add Nextflow to path
         run: |
-          echo 'export PATH="$HOME/bin:$PATH"' >> $HOME/.bash_profile
-          source $HOME/.bash_profile
+          echo 'export PATH="$HOME/.local/bin:$PATH"' >> $HOME/.bashrc
+          source $HOME/.bashrc
 
       - name: Run pipeline
         env:
@@ -41,11 +38,8 @@ jobs:
           nextflow run /Users/jamessacco/Github/projs/cas12/src/pipelines/main.nf
 
   test:
-
     needs: build
-
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
 
