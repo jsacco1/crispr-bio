@@ -53,12 +53,11 @@ jobs:
         uses: conda-incubator/setup-miniconda@v2
         with:
           activate-environment: bio
-          environment-file: envs/environment.yml # If you have an environment.yml file
-          python-version: 3.12
+          environment-file: envs/environment.yml
+          python-version: 3.9
           auto-activate-base: false
 
       - name: Install pytest and test pipeline results
         run: |
           conda install -c conda-forge pytest
-          source activate bio
-          pytest tests/test.py
+          conda run -n bio --no-capture-output pytest tests/test.py
