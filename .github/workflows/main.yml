@@ -38,18 +38,18 @@ jobs:
           cd $GITHUB_WORKSPACE  # Change to the root of your GitHub repository
           nextflow run main.nf
 
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
+test:
+  needs: build
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v2
 
-      - name: Activate conda env
-        run: |
-          . $HOME/miniconda/etc/profile.d/conda.sh
-          conda activate bio
+    - name: Activate conda env
+      run: |
+        source /opt/conda/etc/profile.d/conda.sh  # Update the path to conda.sh
+        conda activate bio
 
-      - name: Test pipeline results
-        run: |
-          # Add test steps here
-          pytest tests/test.py
+    - name: Test pipeline results
+      run: |
+        # Add test steps here
+        pytest tests/test.py
