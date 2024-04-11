@@ -1,2 +1,4 @@
 # Specifies intentionally untracked files to ignore
 data/
+.pytest_cache/
+tests/__pycache__/
