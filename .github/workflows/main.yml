@@ -24,16 +24,21 @@ jobs:
         java-version: '11'
         distribution: zulu
     
-    - name: Install Nextflow
+    - name: Install Nextflow  
       run: |
         wget -qO- get.nextflow.io | bash
-        sudo mv nextflow /usr/local/bin
-        
+        mv nextflow ~/bin
+
+    - name: Add Nextflow to PATH
+      run: |
+        echo 'export PATH=~/bin:$PATH' >> ~/.bashrc
+        source ~/.bashrc
+
     - name: Run pipeline
       env:
         NXF_VER: 23.10.1
-      run: |
-        /Users/jamessacco/opt/bin/nextflow run /Users/jamessacco/Github/projs/cas12/src/pipelines/main.nf
+      run: |  
+        nextflow run /Users/jamessacco/Github/projs/cas12/src/pipelines/main.nf
 
   test:
 
