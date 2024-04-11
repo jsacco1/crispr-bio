@@ -30,3 +30,10 @@ Checking out code
 Setting up environments
 Running the Nextflow pipeline
 Deploying results
+
+The key points of main.yml: 
+
+nextflow will refers to the version installed in the workflow
+Specify the full path to your main.nf script
+No need to specify path to the Nextflow executable
+Can set the NXF_VER env variable to pin version

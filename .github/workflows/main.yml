@@ -24,14 +24,12 @@ jobs:
         java-version: '11'
         distribution: zulu
         
-    - name: Install Nextflow
-      uses: actions/setup-command@v3
-      with: 
-        command: nextflow
-        url: https://github.com/nextflow-io/nextflow/releases/download/v23.10.1/nextflow
-        destination: ~/.local/bin
-
-    - name: Add Nextflow to PATH
+  - name: Install Nextflow
+      run: |
+        curl -fsSL https://get.nextflow.io | bash
+        mv nextflow ~/bin
+    
+    - name: Add Nextflow to path  
       run: |
         echo 'export PATH=~/bin:$PATH' >> ~/.bashrc
         source ~/.bashrc
