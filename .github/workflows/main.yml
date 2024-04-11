@@ -46,7 +46,7 @@ test:
 
     - name: Activate conda env
       run: |
-        source /opt/conda/etc/profile.d/conda.sh  # Update the path to conda.sh
+        source /opt/conda/etc/profile.d/conda.sh  # Use the correct path for GitHub Actions
         conda activate bio
 
     - name: Test pipeline results
