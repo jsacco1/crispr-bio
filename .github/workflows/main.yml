@@ -57,10 +57,7 @@ jobs:
           python-version: 3.12
           auto-activate-base: false
 
-      - name: Install pytest
+      - name: Install pytest and test pipeline results
         run: |
           conda install -c conda-forge pytest
-
-      - name: Test pipeline results
-        run: |
           pytest tests/test.py
