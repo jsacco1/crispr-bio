@@ -35,7 +35,8 @@ jobs:
         env:
           NXF_VER: 23.10.1
         run: |
-          nextflow run /Users/jamessacco/Github/projs/cas12/src/pipelines/main.nf
+          cd $GITHUB_WORKSPACE  # Change to the root of your GitHub repository
+          nextflow run ./src/pipelines/main.nf
 
   test:
     needs: build
