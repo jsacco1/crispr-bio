@@ -1,4 +1,4 @@
-name: Cas12 Nextflow Pipeline 
+name: Cas12 Nextflow Pipeline
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   pull_request:
     branches:
       - main
-      
+
 jobs:
 
   build:
@@ -15,46 +15,46 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    
-    - uses: actions/checkout@v2
-    
-    - name: Set up JDK 
-      uses: actions/setup-java@v2
-      with:
-        java-version: '11'
-        distribution: zulu
-        
-  - name: Install Nextflow
-      run: |
-        curl -fsSL https://get.nextflow.io | bash
-        mv nextflow ~/bin
-    
-    - name: Add Nextflow to path  
-      run: |
-        echo 'export PATH=~/bin:$PATH' >> ~/.bashrc
-        source ~/.bashrc
+      - uses: actions/checkout@v2
 
-    - name: Run pipeline
-      env:
-        NXF_VER: 23.10.1
-      run: |  
-        nextflow run /Users/jamessacco/Github/projs/cas12/src/pipelines/main.nf
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: zulu
+
+      - name: Install Nextflow
+        run: |
+          curl -fsSL https://get.nextflow.io | bash
+          mkdir -p $HOME/bin
+          mv nextflow $HOME/bin
+
+      - name: Add Nextflow to path
+        run: |
+          echo 'export PATH="$HOME/bin:$PATH"' >> $HOME/.bashrc
+          source $HOME/.bashrc
+
+      - name: Run pipeline
+        env:
+          NXF_VER: 23.10.1
+        run: |
+          nextflow run /Users/jamessacco/Github/projs/cas12/src/pipelines/main.nf
 
   test:
 
     needs: build
-    
-    runs-on: ubuntu-latest
-    
-    steps:
-    
-    - uses: actions/checkout@v2
 
-    - name: Activate conda env
-      run: |
-        conda activate bio
-    
-    - name: Test pipeline results
-      run: |
-        # Add test steps here
-        pytest tests/test.py
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Activate conda env
+        run: |
+          . $HOME/miniconda/etc/profile.d/conda.sh
+          conda activate bio
+
+      - name: Test pipeline results
+        run: |
+          # Add test steps here
+          pytest tests/test.py
