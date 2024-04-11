@@ -1,5 +1,3 @@
-# test.py
-
 import pytest
 import os
 
@@ -11,19 +9,24 @@ def test_output_files():
     expected_files = [
         'results/sample1.csv',
         'results/sample2.csv',
-        'summary.txt'
+        'results/summary.txt'  # Update the path to summary.txt
     ]
     
     # Check each expected file
     for file in expected_files:
-        assert os.path.exists(file) == True
-        
+        # Get the absolute path to the file based on the current directory
+        file_path = os.path.abspath(file)
+        assert os.path.exists(file_path)  # Check if the file exists
+
 @pytest.mark.workflow        
 def test_summary_content():
     """Test summary text"""
     
+    # Define the path to summary.txt based on your repository structure
+    summary_path = 'results/summary.txt'  # Update the path to summary.txt
+    
     # Load summary file
-    with open('summary.txt') as f:
+    with open(summary_path) as f:
         content = f.read()
         
     # Check expected strings
