@@ -60,4 +60,6 @@ jobs:
       - name: Install pytest and test pipeline results
         run: |
           conda install -c conda-forge pytest
-          conda run -n bio --no-capture-output pytest tests/test.py
+          echo "source activate bio" >> $GITHUB_ENV
+          pytest tests/test.py
+        shell: bash -l {0}
