@@ -12,7 +12,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Set up JDK
         uses: actions/setup-java@v2
@@ -37,7 +38,7 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE  # Change to the root of your GitHub repository
           nextflow run main.nf
-
+          
       - name: Activate conda env and test pipeline
         needs: build
         runs-on: ubuntu-latest
