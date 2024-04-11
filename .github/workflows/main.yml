@@ -31,8 +31,8 @@ jobs:
 
       - name: Add Nextflow to path
         run: |
-          echo 'export PATH="$HOME/bin:$PATH"' >> $HOME/.bashrc
-          source $HOME/.bashrc
+          echo 'export PATH="$HOME/bin:$PATH"' >> $HOME/.bash_profile
+          source $HOME/.bash_profile
 
       - name: Run pipeline
         env:
