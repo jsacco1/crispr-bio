@@ -38,7 +38,7 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE  # Change to the root of your GitHub repository
           nextflow run main.nf
-
+          
   test:
     needs: build
     runs-on: ubuntu-latest
@@ -60,6 +60,4 @@ jobs:
       - name: Install pytest and test pipeline results
         run: |
           conda install -c conda-forge pytest
-          echo "source activate bio" >> $GITHUB_ENV
-          pytest tests/test.py
-        shell: bash -l {0}
+          conda run -n bio pytest tests/test.py
