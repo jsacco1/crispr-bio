@@ -36,7 +36,7 @@ jobs:
           NXF_VER: 23.10.1
         run: |
           cd $GITHUB_WORKSPACE  # Change to the root of your GitHub repository
-          nextflow run ./src/pipelines/main.nf
+          nextflow run main.nf
 
   test:
     needs: build
